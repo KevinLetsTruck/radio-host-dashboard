@@ -159,3 +159,38 @@ function App() {
 
                 {caller.notes && (
                   <div className="caller-notes">
+                    <strong>Notes:</strong> {caller.notes}
+                  </div>
+                )}
+
+                <div className="caller-meta">
+                  <div className="wait-time">
+                    ⏱️ {formatWaitTime(caller.timestamp)}
+                  </div>
+                  <div className="caller-type">
+                    <span className={`type-badge type-${callerType}`}>
+                      {callerType}
+                    </span>
+                  </div>
+                </div>
+
+                {history.length > 0 && (
+                  <div className="caller-history">
+                    <div className="history-title">Call History</div>
+                    {history.slice(0, 2).map((call, index) => (
+                      <div key={index} className="history-item">
+                        <span className="history-date">{call.date}:</span> {call.topic}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default App
